@@ -23,4 +23,4 @@ jobs:
     - name: Build the Docker Image
       run: docker build . --file Dockerfile --tag p4it-kft/yii2-php7.4-docker:$(date +%s)
     - name: Docker Push
-      run: docker push p4it/yii2-php7.4
+      run: docker push p4it/yii2-php7.4:latest
