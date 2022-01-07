@@ -15,13 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker Image
-      run: docker build . --file Dockerfile --tag p4it-kft/yii2-php7.4-docker:$(date +%s)
-    - name: Login to Docker
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKER_USER }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Docker Tag
-      run: docker tag yii2-php7.4-docker p4it/yii2-php7.4
-    - name: Docker Push
-      run: docker push p4it/yii2-php7.4
+      run: docker build . --file Dockerfile --tag yii2-php7.4-docker:$(date +%s)
