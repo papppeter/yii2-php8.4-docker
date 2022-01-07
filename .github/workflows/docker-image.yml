@@ -21,5 +21,7 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Docker Tag
+      run: docker tag yii2-php7.4-docker p4it/yii2-php7.4
     - name: Docker Push
-      run: docker-compose push
+      run: docker push p4it/yii2-php7.4
