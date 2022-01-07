@@ -8,4 +8,4 @@ RUN apt-get -y install nodejs
 RUN apt-get install -y autossh
 RUN apt-get install -y systemd
 RUN docker-php-ext-install sockets
-RUN pecl install grpc
+#RUN pecl install grpc
