@@ -8,4 +8,14 @@ RUN apt-get -y install nodejs
 RUN apt-get install -y autossh
 RUN apt-get install -y systemd
 RUN docker-php-ext-install sockets
-#RUN pecl install grpc
+
+RUN apt-get install -y git zip
+
+RUN apt install -y libnss3-tools
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </dev/null \
+  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /root/.profile \
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+RUN brew install mkcert
+RUN brew install grpc
+
+RUN a2enmod ssl
