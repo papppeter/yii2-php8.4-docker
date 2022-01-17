@@ -10,7 +10,6 @@ RUN apt-get install -y systemd
 RUN docker-php-ext-install sockets
 
 RUN apt-get install -y git zip locales locales-all mc build-essential
-RUN apt-get install -y npm
 
 # Set the locale
 RUN sed -i '/en_GB.UTF-8/s/^# //g' /etc/locale.gen && \
