@@ -19,12 +19,8 @@ ENV LANGUAGE en_GB:en
 ENV LC_ALL en_GB.UTF-8  
 
 RUN apt install -y libnss3-tools
-ENV PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH
+RUN curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64" \
+  && chmod +x mkcert-v*-linux-amd64 \
+  && cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 
-RUN git clone https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/Homebrew \
-	&& mkdir /home/linuxbrew/.linuxbrew/bin \
-	&& ln -s ../Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/ \
-	&& brew config
-
-RUN brew install mkcert
-RUN brew install grpc
+RUN pecl install grpc
