@@ -1,4 +1,4 @@
-FROM yiisoftware/yii2-php:7.4-apache
+FROM yiisoftware/yii2-php:8.1-apache
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
