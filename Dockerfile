@@ -2,9 +2,12 @@ FROM yiisoftware/yii2-php:8.1-apache
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
-RUN apt-get -y install curl gnupg zlib1g-dev
-RUN curl -sL https://deb.nodesource.com/setup_16.x  | bash -
-RUN apt-get -y install nodejs
+RUN apt-get install -y ca-certificates curl gnupg
+RUN mkdir -p /etc/apt/keyrings
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
+RUN apt-get update -y
+RUN apt-get install nodejs -y
 RUN apt-get install -y autossh
 RUN apt-get install -y systemd
 RUN docker-php-ext-install sockets
@@ -23,5 +26,5 @@ RUN curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64" \
   && chmod +x mkcert-v*-linux-amd64 \
   && cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 
-RUN pecl install grpc
-RUN docker-php-ext-enable grpc
+# RUN pecl install grpc
+# RUN docker-php-ext-enable grpc
