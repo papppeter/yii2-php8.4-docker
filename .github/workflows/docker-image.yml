@@ -1,4 +1,4 @@
-name: yii2-php8.1
+name: yii2-php8.2
 
 on:
   push:
@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: p4it/yii2-php:8.1-apache
+          tags: p4it/yii2-php:8.2-apache
