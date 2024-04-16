@@ -33,7 +33,4 @@ RUN apt-get install -y \
 		sudo \
 		mc \
 ;
-RUN set -eux; \
-	install-php-extensions \
-		xdebug \
-    ;
+RUN docker-php-ext-enable xdebug;
