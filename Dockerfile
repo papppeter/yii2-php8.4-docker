@@ -1,4 +1,4 @@
-FROM yiisoftware/yii2-php:8.1-apache
+FROM yiisoftware/yii2-php:8.2-apache
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
@@ -26,5 +26,14 @@ RUN curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64" \
   && chmod +x mkcert-v*-linux-amd64 \
   && cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 
-# RUN pecl install grpc
-# RUN docker-php-ext-enable grpc
+#install yarn
+RUN corepack enable
+#add user to apache https://cloudkul.com/blog/apache-virtual-hosting-with-different-users/
+RUN apt-get install -y \
+		sudo \
+		mc \
+;
+RUN set -eux; \
+	install-php-extensions \
+		xdebug \
+    ;
