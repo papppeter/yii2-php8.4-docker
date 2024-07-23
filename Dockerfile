@@ -1,4 +1,4 @@
-FROM yiisoftware/yii2-php:8.2-apache
+FROM yiisoftware/yii2-php:8.3-apache
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
@@ -36,3 +36,20 @@ RUN apt-get install -y \
 RUN docker-php-ext-enable xdebug;
 
 #update
+
+EXPOSE 80
+
+ARG UID=1000
+
+#add user for yii binary
+RUN addgroup --gid ${UID} yii
+RUN adduser --uid ${UID} --gid ${UID} yii
+RUN adduser yii sudo
+RUN adduser yii root
+
+RUN echo 'yii ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+
+USER yii:yii
+
+#set workdir for app
+WORKDIR /app
