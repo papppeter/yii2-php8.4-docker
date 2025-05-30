@@ -1,4 +1,4 @@
-FROM yiisoftware/yii2-php:8.3-apache
+FROM yiisoftware/yii2-php:8.4-apache
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
@@ -22,9 +22,6 @@ ENV LANGUAGE en_GB:en
 ENV LC_ALL en_GB.UTF-8  
 
 RUN apt install -y libnss3-tools
-RUN curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64" \
-  && chmod +x mkcert-v*-linux-amd64 \
-  && cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 
 #install yarn
 RUN corepack enable
