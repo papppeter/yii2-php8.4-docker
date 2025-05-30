@@ -1,4 +1,4 @@
-name: yii2-php8.3
+name: Build
 
 on:
   push:
