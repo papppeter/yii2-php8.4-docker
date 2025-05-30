@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: p4it/yii2-php:8.3-apache
+          tags: p4it/yii2-php:8.4-apache
